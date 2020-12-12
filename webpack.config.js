@@ -7,7 +7,7 @@ module.exports = (env) => {
   const isProduction = env.mode === 'production';
 
   const config = {
-    entry: './src/index.js',
+    entry: ['babel-polyfill', './src/index.js'],
     devtool: isProduction ? 'cheap-module-source-map' : 'inline-source-map',
     output: {
       filename: 'bundle.js',
@@ -91,7 +91,12 @@ module.exports = (env) => {
           use: {
             loader: 'babel-loader',
             options: {
-              plugins: ['@babel/plugin-proposal-class-properties'],
+              plugins: isProduction
+                ? ['@babel/plugin-proposal-class-properties']
+                : [
+                    '@babel/plugin-proposal-class-properties',
+                    'babel-plugin-styled-components',
+                  ],
               presets: ['@babel/preset-env', '@babel/preset-react'],
             },
           },
