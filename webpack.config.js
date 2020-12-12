@@ -20,6 +20,7 @@ module.exports = (env) => {
         '@pages': path.resolve(__dirname, 'src/pages'),
         '@images': path.resolve(__dirname, 'src/assets/images'),
         '@styles': path.resolve(__dirname, 'src/assets/styles'),
+        '@font': path.resolve(__dirname, 'src/assets/font'),
       },
     },
     devServer: {

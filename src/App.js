@@ -2,11 +2,16 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import test from './pages/test';
 
+import GlobalStyles from '@styles/GlobalStyles';
+
 function App() {
   return (
-    <Switch>
-      <Route path="/" component={test} exact />
-    </Switch>
+    <>
+      <GlobalStyles />
+      <Switch>
+        <Route path="/" component={test} exact />
+      </Switch>
+    </>
   );
 }
 
