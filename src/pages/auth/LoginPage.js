@@ -1,8 +1,8 @@
 import React from 'react';
-import Login from '@components/auth/Login';
+import LoginContainer from '../../containers/LoginContainer';
 
 const loginPage = () => {
-  return <Login />;
+  return <LoginContainer />;
 };
 
 export default loginPage;
