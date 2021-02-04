@@ -18,8 +18,7 @@ module.exports = (env) => {
         '@components': path.resolve(__dirname, 'src/components'),
         '@containers': path.resolve(__dirname, 'src/containers'),
         '@pages': path.resolve(__dirname, 'src/pages'),
-        '@modules': path.resolve(__dirname, 'src/modules'),
-        '@lib': path.resolve(__dirname, 'src/lib'),
+        '@images': path.resolve(__dirname, 'src/assets/images'),
         '@styles': path.resolve(__dirname, 'src/assets/styles'),
         '@font': path.resolve(__dirname, 'src/assets/font'),
       },
@@ -30,8 +29,6 @@ module.exports = (env) => {
       overlay: true,
       open: true,
       port: 3000,
-      stats: 'errors-warnings',
-      historyApiFallback: true,
     },
     mode: env.mode,
     module: {
