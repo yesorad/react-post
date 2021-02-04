@@ -3,7 +3,6 @@ import * as authAPI from '@lib/api/auth';
 import { changeField } from '@modules/auth';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useAsync from '../lib/hooks/useAsync';
 import { initializeForm } from '../modules/auth';
 
 const RegisterContainer = () => {
@@ -64,8 +63,6 @@ const RegisterContainer = () => {
       setLoading(false);
     };
     handleRegister();
-    console.log('에러', error);
-    console.log('성공', success);
   }, []);
 
   useEffect(() => {
