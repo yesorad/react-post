@@ -4,6 +4,7 @@ const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 const SET_TOKEN = 'auth/SET_TOKEN';
 const CHECK_USER = 'auth/CHECK_USER';
+const LOGOUT = 'auth/LOGOUT';
 
 export const setToken = createAction(SET_TOKEN, (accessToken) => ({
   accessToken,
@@ -23,6 +24,11 @@ export const initializeForm = createAction(INITIALIZE_FORM, (form) => form);
 export const checkUser = createAction(CHECK_USER, (user) => ({
   user,
 }));
+
+export const logout = createAction(LOGOUT, () => {
+  localStorage.removeItem('user');
+  localStorage.removeItem('accessToken');
+});
 
 const initialState = {
   register: {
@@ -57,6 +63,10 @@ const auth = handleActions(
     [CHECK_USER]: (state, { payload: auth }) => ({
       ...state,
       user: auth.user,
+    }),
+    [LOGOUT]: (state) => ({
+      ...state,
+      user: null,
     }),
   },
   initialState,

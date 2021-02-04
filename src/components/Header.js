@@ -40,7 +40,7 @@ const UserBlock = styled.div`
   background: #0000ff;
 `;
 
-const Header = () => {
+const Header = ({ user, onLogout }) => {
   return (
     <Wrapper>
       <HeaderInner>
@@ -55,7 +55,14 @@ const Header = () => {
             <li>Post</li>
           </ul>
         </NavBlock>
-        <UserBlock />
+        {user ? (
+          <div>
+            <p>{user.name}</p>
+            <button onClick={onLogout}>로그아웃</button>
+          </div>
+        ) : (
+          <UserBlock />
+        )}
       </HeaderInner>
     </Wrapper>
   );

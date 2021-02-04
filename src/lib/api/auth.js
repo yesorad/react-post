@@ -17,4 +17,4 @@ export const login = ({ email, password }) =>
 export const check = () => instance.get('/auth/me');
 
 // 로그아웃
-export const logout = () => instance.get('/auth/logout');
+export const logout = () => instance.delete('/auth/logout');

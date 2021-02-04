@@ -7,14 +7,14 @@ import registerPage from '@pages/auth/registerPage';
 import GlobalStyles from '@styles/GlobalStyles';
 import index from './pages';
 import Layout from './components/Layout';
-import Header from './components/Header';
+import HeaderContainer from './containers/HeaderContainer';
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Layout>
-        <Header />
+        <HeaderContainer />
         <Switch>
           <Route path="/" component={index} exact />
           <Route path="/register" component={registerPage} />
