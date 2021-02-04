@@ -6,8 +6,21 @@ import App from './App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './modules';
+import { checkUser } from './modules/auth';
 
 const store = createStore(rootReducer, composeWithDevTools());
+
+const loadUser = () => {
+  try {
+    const user = localStorage.getItem('user');
+    if (!user) return;
+    store.dispatch(checkUser(user));
+  } catch (e) {
+    console.log('localstrage is not working');
+  }
+};
+
+loadUser();
 
 ReactDOM.render(
   <Provider store={store}>

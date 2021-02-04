@@ -3,18 +3,21 @@ import * as authAPI from '@lib/api/auth';
 import { changeField } from '@modules/auth';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import instance from '../lib/api/instance';
-import { initializeForm, setToken } from '../modules/auth';
+import { checkUser, initializeForm, setToken } from '../modules/auth';
 
-const LoginContainer = () => {
+const LoginContainer = ({ history }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [userError, setUserError] = useState(false);
 
   const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({
+  const { form, user } = useSelector(({ auth }) => ({
     form: auth.login,
     accestToken: auth.accestToken,
+    user: auth.user,
   }));
 
   const onChange = (e) => {
@@ -54,8 +57,16 @@ const LoginContainer = () => {
         }
 
         setSuccess(true);
+
+        try {
+          const check = await authAPI.check();
+          dispatch(checkUser(check.data.user));
+        } catch (e) {
+          setUserError(e);
+        }
       } catch (e) {
         setError(e);
+        // setUserError(e);
       }
       setLoading(false);
     };
@@ -78,7 +89,22 @@ const LoginContainer = () => {
     if (success) {
       console.log('로그인 성공');
     }
-  }, [success, error]);
+    if (userError) {
+      console.log('로그인 확인 실패');
+    }
+  }, [success, error, userError]);
+
+  useEffect(() => {
+    if (user) {
+      history.push('/');
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+        alert('로그인 했음!');
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
+    }
+  }, [history, user]);
 
   return (
     <AuthForm
@@ -92,4 +118,4 @@ const LoginContainer = () => {
   );
 };
 
-export default LoginContainer;
+export default withRouter(LoginContainer);
