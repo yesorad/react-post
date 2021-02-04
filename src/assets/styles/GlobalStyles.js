@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
-import normalize from 'styled-normalize';
+import reset from 'styled-reset';
 import font from '../font/font';
 
 const GlobalStyles = createGlobalStyle`
-  ${normalize}
+  ${reset}
   ${font}
 
   *{
