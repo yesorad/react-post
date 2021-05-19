@@ -8,6 +8,7 @@ import GlobalStyles from '@styles/GlobalStyles';
 import index from './pages';
 import Layout from './components/Layout';
 import HeaderContainer from './containers/HeaderContainer';
+import postList from './pages/posts/postList';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" component={index} exact />
           <Route path="/register" component={registerPage} />
           <Route path="/login" component={loginPage} />
+          <Route path="/post" component={postList} />
         </Switch>
       </Layout>
     </>
