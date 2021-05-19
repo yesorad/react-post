@@ -44,12 +44,11 @@ const LoginContainer = ({ history }) => {
       setLoading(true);
       try {
         const response = await authAPI.login({ email, password });
+
         let accestToken = response.data.access_token || null;
 
         if (accestToken) {
-          instance.defaults.headers.common[
-            'Authorization'
-          ] = `Bearer ${accestToken}`;
+          instance.defaults.headers.common['Authorization'] = `Bearer ${accestToken}`;
 
           localStorage.setItem('accessToken', accestToken);
 

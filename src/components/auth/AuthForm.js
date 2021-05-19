@@ -78,7 +78,7 @@ const ButtonStyled = styled.button`
   z-index: 1;
 `;
 
-const AuthForm = ({ type, form, onChange, onSubmit, loading, error }) => {
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
   const authType = {
     login: 'Login',
     register: 'Register',

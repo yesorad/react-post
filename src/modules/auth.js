@@ -10,14 +10,11 @@ export const setToken = createAction(SET_TOKEN, (accessToken) => ({
   accessToken,
 }));
 
-export const changeField = createAction(
-  CHANGE_FIELD,
-  ({ form, key, value }) => ({
-    form,
-    key,
-    value,
-  }),
-);
+export const changeField = createAction(CHANGE_FIELD, ({ form, key, value }) => ({
+  form,
+  key,
+  value,
+}));
 
 export const initializeForm = createAction(INITIALIZE_FORM, (form) => form);
 
