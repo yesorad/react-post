@@ -53,7 +53,7 @@ const Header = ({ user, onLogout }) => {
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/post">post</Link>
+              <Link to="/posts">post</Link>
             </li>
           </ul>
         </NavBlock>

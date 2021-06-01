@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const InnerWrap = styled.article`
@@ -36,18 +37,16 @@ const ListTitle = styled.figure`
   }
 `;
 
-const PostList = ({ items, loading, error }) => {
-  if (loading) return <div>로딩중..</div>;
-  if (error) return <div>에러가 발생했습니다</div>;
-  if (!items) return null;
-  console.log(items);
+const PostList = ({ items }) => {
   return (
     <InnerWrap>
       <BoardList>
         {items.map((item) => (
           <li key={item.id}>
             <ListTitle>
-              <strong>{item.title}</strong> <span>{item.created_at}</span>
+              <Link to={`/post/${item.id}`}>
+                <strong>{item.title}</strong> <span>{item.created_at.substr(0, 10)}</span>
+              </Link>
             </ListTitle>
             {item.body.slice(0, 100)}
           </li>

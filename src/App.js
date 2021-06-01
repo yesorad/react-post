@@ -9,6 +9,7 @@ import index from './pages';
 import Layout from './components/Layout';
 import HeaderContainer from './containers/HeaderContainer';
 import postList from './pages/posts/postList';
+import postDetail from './pages/posts/postDetail';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="/" component={index} exact />
           <Route path="/register" component={registerPage} />
           <Route path="/login" component={loginPage} />
-          <Route path="/post" component={postList} />
+          <Route path="/posts" component={postList} />
+          <Route path="/post/:postId" component={postDetail} />
         </Switch>
       </Layout>
     </>
