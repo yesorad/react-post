@@ -12,6 +12,7 @@ module.exports = (env) => {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'build'),
+      publicPath: '/'
     },
     resolve: {
       alias: {
@@ -25,13 +26,14 @@ module.exports = (env) => {
       },
     },
     devServer: {
+      contentBase: path.join(__dirname, "build"),
       hot: true,
       host: 'localhost',
       overlay: true,
       open: true,
       port: 3000,
       stats: 'errors-warnings',
-      historyApiFallback: true,
+      historyApiFallback: true
     },
     mode: env.mode,
     module: {
