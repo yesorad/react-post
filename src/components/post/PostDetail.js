@@ -27,17 +27,26 @@ const TextBlock = styled.div`
   padding: 10px 0;
 `;
 
-function PostDetail({item}) {
-  const {title, created_at, body, user} = item
+const Button = styled.button`
+  padding: 5px 15px;
+  font-size: 14px;
+  color: #fff;
+  background: #333;
+  cursor: pointer;
+`;
+
+function PostDetail({ item, onRemove }) {
+  const { id, title, created_at, body, user } = item;
+  const userId = JSON.parse(localStorage.getItem('user')).id;
+
   return (
     <InnerWrap>
       <TitieBlock>
         <h3>{title}</h3>
         <span>{created_at.substr(0, 10)}</span>
       </TitieBlock>
-      <TextBlock>
-        {body}
-      </TextBlock>
+      <TextBlock>{body}</TextBlock>
+      {userId === user.id && <Button onClick={() => onRemove(id)}>삭제하기</Button>}
     </InnerWrap>
   );
 }
