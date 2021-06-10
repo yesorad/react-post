@@ -49,9 +49,11 @@ const Header = ({ user, onLogout }) => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            {!user &&
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            }
             <li>
               <Link to="/posts">post</Link>
             </li>
