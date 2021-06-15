@@ -25,10 +25,17 @@ const TextArea = styled.textarea`
   resize: none;
 `;
 
-function PostWrite({ form, onChange }) {
+const Button = styled.button`
+  width: 300px;
+  height: 40px;
+  font-size: 14px;
+  color: #000;
+`;
+
+function PostWrite({ form, onChange, onSubmit }) {
   return (
     <InnerWrap>
-      <FormBlock>
+      <FormBlock onSubmit={onSubmit}>
         <Title
           name="title"
           onChange={onChange}
@@ -41,6 +48,7 @@ function PostWrite({ form, onChange }) {
           value={form.body}
           placeholder="내용 입려하세요"        
         />
+        <Button>작성</Button>
       </FormBlock>
     </InnerWrap>
   );
