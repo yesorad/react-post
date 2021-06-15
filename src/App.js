@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import HeaderContainer from './containers/HeaderContainer';
 import postList from './pages/posts/postList';
 import postDetail from './pages/posts/postDetail';
+import postWrite from './pages/posts/postWrite';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" component={loginPage} />
           <Route path="/posts" component={postList} />
           <Route path="/post/:postId" component={postDetail} />
+          <Route path="/write" component={postWrite} />
         </Switch>
       </Layout>
     </>
