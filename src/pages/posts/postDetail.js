@@ -1,9 +1,13 @@
-import React from 'react';
-import PostDetailContainer from '../../containers/post/PostDetailContainer';
+import React, {Fragment} from 'react';
+import PostDetailContainer from '@containers/post/PostDetailContainer';
+import CommentListContainer from '@containers/post/comment/CommentListContainer';
 
 const postDetail = () => {
   return (
-    <PostDetailContainer/>
+    <Fragment>
+      <PostDetailContainer/>
+      <CommentListContainer/>
+    </Fragment>
   );
 }
 
