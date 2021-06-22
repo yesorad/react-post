@@ -1,11 +1,12 @@
 import AuthForm from '@components/auth/authForm';
 import * as authAPI from '@lib/api/auth';
+import { withRouter } from 'react-router-dom';
 import { changeField } from '@modules/auth';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initializeForm } from '../modules/auth';
 
-const RegisterContainer = () => {
+const RegisterContainer = ({ history }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -80,19 +81,13 @@ const RegisterContainer = () => {
     }
     if (success) {
       console.log('회원가입 성공');
+      history.push('/login');
     }
-  }, [success, error]);
+  }, [success, error, history]);
 
   return (
-    <AuthForm
-      type="register"
-      form={form}
-      onChange={onChange}
-      onSubmit={onSubmit}
-      loading={loading}
-      error={error}
-    />
+    <AuthForm type="register" form={form} onChange={onChange} onSubmit={onSubmit} loading={loading} error={error} />
   );
 };
 
-export default RegisterContainer;
+export default withRouter(RegisterContainer);
